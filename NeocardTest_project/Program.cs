@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Linq;
+using System.Runtime.Serialization;
+
+namespace NeocardTest_project
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str = "fi, fr; q = 0.9, en; q = 0.8, de; q = 0.7, *; q = 0.5";
+
+            string[] res;
+            Test test = new Test();
+            res = test.ExtractValues(str);
+
+            //ExtractValues(str);
+            Console.WriteLine("Result value is {0}", res);
+            Console.ReadKey();
+        }
+    }
+
+    public class Test
+    {
+        public string[] ExtractValues(string input)
+        {           
+           
+            if (input == null)
+            {
+                return null;
+            }
+            else
+            {
+                return input
+                    .Split(',', ',')
+                    .Select(v => v.Trim())
+                    .Where(v => !string.IsNullOrEmpty(v) && !
+                    v.Contains("="))
+                    .ToArray();
+            }                   
+        }
+    }
+
+
+}
