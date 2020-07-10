@@ -11,9 +11,12 @@ namespace NeocardTest_project
     {
         static void Main(string[] args)
         {
+            //Creating the string for this values
             string str = "fi, fr; q = 0.9, en; q = 0.8, de; q = 0.7, *; q = 0.5";
 
             string[] res;
+
+            //calling the extract method
             Test test = new Test();
             res = test.ExtractValues(str);
 
