@@ -21,7 +21,7 @@ namespace NeocardTest_project
             res = test.ExtractValues(str);
 
             //ExtractValues(str);
-            Console.WriteLine("Result value is {0}", res);
+            Console.WriteLine($"result is: {string.Join(",", res)}");
             Console.ReadKey();
         }
     }
@@ -30,7 +30,6 @@ namespace NeocardTest_project
     {
         public string[] ExtractValues(string input)
         {           
-           
             if (input == null)
             {
                 return null;
@@ -38,7 +37,7 @@ namespace NeocardTest_project
             else
             {
                 return input
-                    .Split(',', ',')
+                    .Split(',', ';')
                     .Select(v => v.Trim())
                     .Where(v => !string.IsNullOrEmpty(v) && !
                     v.Contains("="))
@@ -46,6 +45,4 @@ namespace NeocardTest_project
             }                   
         }
     }
-
-
 }
